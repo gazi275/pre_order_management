@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ──────────────────────────────────────────────
+// Enums (SQLite doesn't support enums natively,
+// so we use String fields with validation in app layer)
+// ──────────────────────────────────────────────
+
+model Preorder {
+  id            String   @id @default(cuid())
+  name          String
+  products      Int      @default(1)
+  preorderWhen  String   @default("regardless-of-stock") // "out-of-stock" | "regardless-of-stock"
+  startsAt      DateTime
+  endsAt        DateTime?
+  status        String   @default("active") // "active" | "inactive"
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("preorders")
+}
