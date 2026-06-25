@@ -27,11 +27,15 @@ const getAllPreorders = async (
   // Build a deterministic cache key from the query parameters
   const cacheKey = PreorderCache.buildListKey(filters, options);
 
+  console.log("getAllPreorders filters:", filters, "options:", options, "cacheKey:", cacheKey);
+
   // Try cache first
   const cached = await PreorderCache.getCachedList(cacheKey);
   if (cached) {
+    console.log("Cache hit for:", cacheKey);
     return cached;
   }
+  console.log("Cache miss for:", cacheKey);
 
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculatePagination(options);

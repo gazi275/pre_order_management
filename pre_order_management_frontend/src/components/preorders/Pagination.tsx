@@ -23,14 +23,14 @@ export default function Pagination({ meta, onPageChange }: PaginationProps) {
         onClick={() => onPageChange(page - 1)}
         disabled={page <= 1}
         className={`
-          p-1 rounded transition-colors duration-150
-          ${page <= 1 ? "text-gray-300 cursor-not-allowed" : "text-gray-500 hover:text-gray-700 hover:bg-gray-100"}
+          p-1.5 rounded-lg border transition-all duration-150 shadow-sm
+          ${page <= 1 ? "border-gray-200 text-gray-300 bg-gray-50/50 cursor-not-allowed" : "border-gray-300 text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700"}
         `}
       >
         <HiChevronLeft className="w-4 h-4" />
       </button>
 
-      <span className="text-gray-600 text-sm">
+      <span className="text-gray-700 text-sm font-semibold">
         Showing {from} to {to} from {total}
       </span>
 
@@ -39,8 +39,8 @@ export default function Pagination({ meta, onPageChange }: PaginationProps) {
         onClick={() => onPageChange(page + 1)}
         disabled={page >= totalPages}
         className={`
-          p-1 rounded transition-colors duration-150
-          ${page >= totalPages ? "text-gray-300 cursor-not-allowed" : "text-gray-500 hover:text-gray-700 hover:bg-gray-100"}
+          p-1.5 rounded-lg border transition-all duration-150 shadow-sm
+          ${page >= totalPages ? "border-gray-200 text-gray-300 bg-gray-50/50 cursor-not-allowed" : "border-gray-300 text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700"}
         `}
       >
         <HiChevronRight className="w-4 h-4" />

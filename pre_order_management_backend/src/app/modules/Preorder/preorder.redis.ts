@@ -10,7 +10,17 @@ const DEFAULT_TTL = 3600; // 1 hour in seconds
  * Uses MD5 hash of the sorted JSON to keep key length short.
  */
 const buildListKey = (filters: Record<string, any>, options: Record<string, any>): string => {
-  const raw = JSON.stringify({ filters, options }, Object.keys({ filters, options }).sort());
+  const sortedFilters = Object.keys(filters || {}).sort().reduce((acc, key) => {
+    acc[key] = filters[key];
+    return acc;
+  }, {} as Record<string, any>);
+
+  const sortedOptions = Object.keys(options || {}).sort().reduce((acc, key) => {
+    acc[key] = options[key];
+    return acc;
+  }, {} as Record<string, any>);
+
+  const raw = JSON.stringify({ filters: sortedFilters, options: sortedOptions });
   const hash = crypto.createHash("md5").update(raw).digest("hex");
   return `${LIST_PREFIX}${hash}`;
 };
