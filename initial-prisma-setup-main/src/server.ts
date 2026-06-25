@@ -1,6 +1,7 @@
 import { Server } from "http";
 import config from "./config";
 import app from "./app";
+import redis from "./shared/redis";
 
 let server: Server;
 
@@ -13,7 +14,13 @@ async function startServer() {
 async function main() {
   await startServer();
 
-  const exitHandler = () => {
+  const exitHandler = async () => {
+    try {
+      await redis.quit();
+      console.info("Redis disconnected.");
+    } catch (err) {
+      console.error("Error disconnecting Redis:", err);
+    }
     if (server) {
       server.close(() => {
         console.info("Server closed!");
