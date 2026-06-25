@@ -120,7 +120,7 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
           <button
             id="back-button"
             onClick={() => router.push("/preorders")}
-            className="flex items-center gap-1 text-sm text-gray-700 hover:text-gray-900 transition-colors"
+            className="flex items-center gap-1 px-3 py-1.5 text-sm font-semibold text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-150 shadow-sm"
           >
             <HiChevronLeft className="w-4 h-4" />
             <span>Back</span>
@@ -130,7 +130,7 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
             <button
               id="cancel-button-top"
               onClick={() => router.push("/preorders")}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-150"
+              className="px-4 py-2 text-sm font-semibold text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-150 shadow-sm"
             >
               Cancel
             </button>
@@ -138,7 +138,7 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
               id="save-button-top"
               onClick={handleSubmit}
               disabled={isSaving}
-              className="px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 min-w-[120px] justify-center"
+              className="px-4 py-2 text-sm font-semibold text-white bg-black rounded-lg hover:bg-gray-955 transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 min-w-[120px] justify-center shadow-sm"
             >
               {isSaving ? (
                 <>
@@ -269,7 +269,7 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
                 <label className="text-sm font-semibold text-gray-800">
                   Ends at
                 </label>
-                <p className="text-xs text-green-600 mt-0.5">
+                <p className="text-xs text-gray-400 mt-0.5">
                   Leave empty for no end date.
                 </p>
               </div>
@@ -311,7 +311,7 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
           <button
             id="cancel-button-bottom"
             onClick={() => router.push("/preorders")}
-            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-150"
+            className="px-4 py-2 text-sm font-semibold text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-150 shadow-sm"
           >
             Cancel
           </button>
@@ -319,7 +319,7 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
             id="save-button-bottom"
             onClick={handleSubmit}
             disabled={isSaving}
-            className="px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 min-w-[120px] justify-center"
+            className="px-4 py-2 text-sm font-semibold text-white bg-black rounded-lg hover:bg-gray-955 transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 min-w-[120px] justify-center shadow-sm"
           >
             {isSaving ? (
               <>

@@ -16,19 +16,18 @@ export default function FilterTabs({
   onFilterChange,
 }: FilterTabsProps) {
   return (
-    <div className="flex items-center gap-0 border-b border-gray-200">
+    <div className="flex items-center gap-1">
       {tabs.map((tab) => (
         <button
           key={tab.value}
           id={`filter-tab-${tab.value}`}
           onClick={() => onFilterChange(tab.value)}
           className={`
-            px-4 py-2 text-sm font-medium transition-colors duration-150
-            border-b-2 -mb-[1px]
+            px-3 py-1.5 text-sm font-semibold rounded-lg transition-colors duration-150
             ${
               activeFilter === tab.value
-                ? "border-gray-900 text-gray-900"
-                : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                ? "bg-gray-100 text-gray-900"
+                : "text-gray-500 hover:text-gray-900 bg-transparent"
             }
           `}
         >
@@ -38,3 +37,4 @@ export default function FilterTabs({
     </div>
   );
 }
+

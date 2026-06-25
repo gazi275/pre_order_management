@@ -26,7 +26,7 @@ export default function Toggle({
         rounded-full border-2 border-transparent transition-colors
         duration-200 ease-in-out focus:outline-none focus-visible:ring-2
         focus-visible:ring-offset-2 focus-visible:ring-gray-500
-        ${enabled ? "bg-gray-900" : "bg-gray-300"}
+        ${enabled ? "bg-black" : "bg-gray-200"}
         ${disabled ? "opacity-50 cursor-not-allowed" : ""}
       `}
     >

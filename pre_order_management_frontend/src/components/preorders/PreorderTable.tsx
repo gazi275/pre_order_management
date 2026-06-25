@@ -147,25 +147,25 @@ export default function PreorderTable({
                 className="w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-gray-500 cursor-pointer"
               />
             </th>
-            <th className="py-3 px-3 text-left font-medium text-gray-600">
+            <th className="py-3 px-3 text-left font-semibold text-gray-500">
               Name
             </th>
-            <th className="py-3 px-3 text-left font-medium text-gray-600">
+            <th className="py-3 px-3 text-left font-semibold text-gray-500">
               Products
             </th>
-            <th className="py-3 px-3 text-left font-medium text-gray-600">
+            <th className="py-3 px-3 text-left font-semibold text-gray-500">
               Preorder when
             </th>
-            <th className="py-3 px-3 text-left font-medium text-gray-600">
+            <th className="py-3 px-3 text-left font-semibold text-gray-500">
               Starts at
             </th>
-            <th className="py-3 px-3 text-left font-medium text-gray-600">
+            <th className="py-3 px-3 text-left font-semibold text-gray-500">
               Ends at
             </th>
-            <th className="py-3 px-3 text-left font-medium text-gray-600">
+            <th className="py-3 px-3 text-left font-semibold text-gray-500">
               Status
             </th>
-            <th className="py-3 px-3 text-left font-medium text-gray-600">
+            <th className="py-3 px-3 text-left font-semibold text-gray-500">
               Actions
             </th>
           </tr>
@@ -189,7 +189,7 @@ export default function PreorderTable({
               </td>
 
               {/* Name */}
-              <td className="py-3 px-3 font-semibold text-gray-900">
+              <td className="py-3 px-3 font-bold text-gray-900">
                 {preorder.name}
               </td>
 
@@ -222,13 +222,13 @@ export default function PreorderTable({
 
               {/* Actions */}
               <td className="py-3 px-3">
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
                   <button
                     id={`edit-preorder-${preorder.id}`}
                     onClick={() =>
                       router.push(`/preorders/edit/${preorder.id}`)
                     }
-                    className="p-1.5 rounded hover:bg-gray-100 text-gray-500 hover:text-gray-700 transition-colors duration-150"
+                    className="p-1.5 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 text-gray-500 hover:text-gray-700 transition-colors duration-150 shadow-sm"
                     title="Edit"
                   >
                     <HiOutlinePencil className="w-4 h-4" />
@@ -236,7 +236,7 @@ export default function PreorderTable({
                   <button
                     id={`delete-preorder-${preorder.id}`}
                     onClick={() => handleDelete(preorder.id)}
-                    className="p-1.5 rounded hover:bg-red-50 text-gray-500 hover:text-red-600 transition-colors duration-150"
+                    className="p-1.5 rounded-lg border border-gray-200 bg-white hover:bg-red-50 text-gray-500 hover:text-red-600 transition-colors duration-150 shadow-sm"
                     title="Delete"
                   >
                     <HiOutlineTrash className="w-4 h-4" />
