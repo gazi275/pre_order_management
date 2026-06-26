@@ -10,7 +10,7 @@ import type {
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/v1",
+    baseUrl: "http://31.220.17.72:8001/api/v1",
   }),
   tagTypes: ["Preorders"],
   endpoints: (builder) => ({
