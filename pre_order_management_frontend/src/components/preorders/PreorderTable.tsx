@@ -39,6 +39,7 @@ export default function PreorderTable({
 }: PreorderTableProps) {
   const router = useRouter();
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [optimisticStatuses, setOptimisticStatuses] = useState<Record<string, string>>({});
   const [toggleStatus] = useTogglePreorderStatusMutation();
   const [deletePreorder] = useDeletePreorderMutation();
 
@@ -66,11 +67,18 @@ export default function PreorderTable({
   };
 
   // ── Status toggle ──
-  const handleToggleStatus = async (id: string) => {
+  const handleToggleStatus = async (id: string, currentStatus: string) => {
+    const newStatus = currentStatus === "active" ? "inactive" : "active";
+    setOptimisticStatuses((prev) => ({ ...prev, [id]: newStatus }));
     try {
       await toggleStatus(id).unwrap();
       toast.success("Status updated");
     } catch {
+      setOptimisticStatuses((prev) => {
+        const next = { ...prev };
+        delete next[id];
+        return next;
+      });
       toast.error("Failed to update status");
     }
   };
@@ -215,8 +223,12 @@ export default function PreorderTable({
               <td className="py-3.5 px-4">
                 <Toggle
                   id={`status-toggle-${preorder.id}`}
-                  enabled={preorder.status === "active"}
-                  onChange={() => handleToggleStatus(preorder.id)}
+                  enabled={
+                    optimisticStatuses[preorder.id] !== undefined
+                      ? optimisticStatuses[preorder.id] === "active"
+                      : preorder.status === "active"
+                  }
+                  onChange={() => handleToggleStatus(preorder.id, preorder.status)}
                 />
               </td>
 
