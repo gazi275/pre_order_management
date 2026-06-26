@@ -53,71 +53,75 @@ export default function SortDropdown({
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50 py-2">
+        <div className="absolute right-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50 p-1">
           <div className="px-3 py-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider">
             Sort by
           </div>
 
-          {sortOptions.map((option) => (
+          <div className="space-y-0.5">
+            {sortOptions.map((option) => (
+              <button
+                key={option.value}
+                id={`sort-option-${option.value}`}
+                onClick={() => {
+                  onSortChange(option.value, sortOrder);
+                }}
+                className={`
+                  w-full text-left px-3 py-1.5 text-sm flex items-center gap-2
+                  transition-colors duration-100 rounded-md
+                  ${
+                    sortBy === option.value
+                      ? "text-gray-900 font-semibold bg-gray-50"
+                      : "text-gray-600 hover:bg-gray-50"
+                  }
+                `}
+              >
+                <span
+                  className={`
+                    w-3.5 h-3.5 rounded-full border-2 flex items-center justify-center shrink-0
+                    ${sortBy === option.value ? "border-black" : "border-gray-300"}
+                  `}
+                >
+                  {sortBy === option.value && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-black" />
+                  )}
+                </span>
+                {option.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="border-t border-gray-100 my-1" />
+
+          {/* Direction */}
+          <div className="space-y-0.5">
             <button
-              key={option.value}
-              id={`sort-option-${option.value}`}
+              id="sort-direction-asc"
               onClick={() => {
-                onSortChange(option.value, sortOrder);
+                onSortChange(sortBy, "asc");
               }}
               className={`
                 w-full text-left px-3 py-1.5 text-sm flex items-center gap-2
-                transition-colors duration-100
-                ${
-                  sortBy === option.value
-                    ? "text-gray-900 font-medium"
-                    : "text-gray-600 hover:bg-gray-50"
-                }
+                transition-colors duration-100 rounded-md
+                ${sortOrder === "asc" ? "bg-gray-100 text-gray-900 font-semibold" : "text-gray-600 hover:bg-gray-50"}
               `}
             >
-              <span
-                className={`
-                  w-3.5 h-3.5 rounded-full border-2 flex items-center justify-center shrink-0
-                  ${sortBy === option.value ? "border-gray-900" : "border-gray-300"}
-                `}
-              >
-                {sortBy === option.value && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-gray-900" />
-                )}
-              </span>
-              {option.label}
+              <span className="text-base font-semibold">↑</span> Ascending
             </button>
-          ))}
-
-          <div className="border-t border-gray-100 my-1.5" />
-
-          {/* Direction */}
-          <button
-            id="sort-direction-asc"
-            onClick={() => {
-              onSortChange(sortBy, "asc");
-            }}
-            className={`
-              w-full text-left px-3 py-1.5 text-sm flex items-center gap-2
-              transition-colors duration-100
-              ${sortOrder === "asc" ? "text-gray-900 font-medium" : "text-gray-600 hover:bg-gray-50"}
-            `}
-          >
-            <span className="text-base">↑</span> Ascending
-          </button>
-          <button
-            id="sort-direction-desc"
-            onClick={() => {
-              onSortChange(sortBy, "desc");
-            }}
-            className={`
-              w-full text-left px-3 py-1.5 text-sm flex items-center gap-2
-              transition-colors duration-100
-              ${sortOrder === "desc" ? "text-gray-900 font-medium" : "text-gray-600 hover:bg-gray-50"}
-            `}
-          >
-            <span className="text-base">↓</span> Descending
-          </button>
+            <button
+              id="sort-direction-desc"
+              onClick={() => {
+                onSortChange(sortBy, "desc");
+              }}
+              className={`
+                w-full text-left px-3 py-1.5 text-sm flex items-center gap-2
+                transition-colors duration-100 rounded-md
+                ${sortOrder === "desc" ? "bg-gray-100 text-gray-900 font-semibold" : "text-gray-600 hover:bg-gray-50"}
+              `}
+            >
+              <span className="text-base font-semibold">↓</span> Descending
+            </button>
+          </div>
         </div>
       )}
     </div>

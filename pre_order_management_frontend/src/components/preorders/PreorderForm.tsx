@@ -126,37 +126,14 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
             <span>Back</span>
           </button>
 
-          <div className="flex items-center gap-3">
-            <button
-              id="cancel-button-top"
-              onClick={() => router.push("/preorders")}
-              className="px-4 py-2 text-sm font-semibold text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-150 shadow-sm"
-            >
-              Cancel
-            </button>
-            <button
-              id="save-button-top"
-              onClick={handleSubmit}
-              disabled={isSaving}
-              className="px-4 py-2 text-sm font-semibold text-white bg-black rounded-lg hover:bg-gray-955 transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 min-w-[120px] justify-center shadow-sm"
-            >
-              {isSaving ? (
-                <>
-                  <Loader size="sm" />
-                  Saving...
-                </>
-              ) : (
-                "Save changes"
-              )}
-            </button>
-          </div>
+          {/* Top buttons removed per user request */}
         </div>
       </div>
 
       {/* Form card */}
       <div className="max-w-5xl mx-auto px-6 py-8">
         <div className="bg-white rounded-lg border border-gray-200 p-8">
-          <div className="mb-8">
+          <div className="pb-6 border-b border-gray-200">
             <h2 className="text-base font-semibold text-gray-900">
               Preorder details
             </h2>
@@ -166,14 +143,14 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
           </div>
 
           {/* Fields */}
-          <div className="space-y-6 max-w-2xl">
+          <div className="divide-y divide-gray-200">
             {/* Name */}
-            <div className="grid grid-cols-[200px_1fr] gap-4 items-start">
+            <div className="grid grid-cols-[280px_1fr] gap-4 items-start py-6">
               <div>
                 <label className="text-sm font-semibold text-gray-800">
                   Name<span className="text-red-500 ml-0.5">*</span>
                 </label>
-                <p className="text-xs text-gray-400 mt-0.5">
+                <p className="text-xs text-gray-400 mt-0.5 max-w-[240px]">
                   A label to recognize this preorder by.
                 </p>
               </div>
@@ -183,17 +160,17 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter preorder name"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-colors"
+                className="max-w-md w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-colors"
               />
             </div>
 
             {/* Products */}
-            <div className="grid grid-cols-[200px_1fr] gap-4 items-start">
+            <div className="grid grid-cols-[280px_1fr] gap-4 items-start py-6">
               <div>
                 <label className="text-sm font-semibold text-gray-800">
                   Products
                 </label>
-                <p className="text-xs text-gray-400 mt-0.5">
+                <p className="text-xs text-gray-400 mt-0.5 max-w-[240px]">
                   Number of products covered by this preorder.
                 </p>
               </div>
@@ -206,19 +183,19 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
                   onChange={(e) =>
                     setProducts(Math.max(0, parseInt(e.target.value) || 0))
                   }
-                  className="w-20 px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-colors"
+                  className="w-20 px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-colors animate-none"
                 />
-                <span className="text-sm text-gray-500">product(s)</span>
+                <span className="text-sm text-gray-500 font-medium">product(s)</span>
               </div>
             </div>
 
             {/* Preorder when */}
-            <div className="grid grid-cols-[200px_1fr] gap-4 items-start">
+            <div className="grid grid-cols-[280px_1fr] gap-4 items-start py-6">
               <div>
                 <label className="text-sm font-semibold text-gray-800">
                   Preorder when
                 </label>
-                <p className="text-xs text-gray-400 mt-0.5">
+                <p className="text-xs text-gray-400 mt-0.5 max-w-[240px]">
                   When customers are allowed to preorder.
                 </p>
               </div>
@@ -228,7 +205,7 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
                 onChange={(e) =>
                   setPreorderWhen(e.target.value as PreorderWhen)
                 }
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-colors appearance-none cursor-pointer"
+                className="max-w-md w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-colors appearance-none cursor-pointer"
                 style={{
                   backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
                   backgroundPosition: "right 0.5rem center",
@@ -245,12 +222,12 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
             </div>
 
             {/* Starts at */}
-            <div className="grid grid-cols-[200px_1fr] gap-4 items-start">
+            <div className="grid grid-cols-[280px_1fr] gap-4 items-start py-6">
               <div>
                 <label className="text-sm font-semibold text-gray-800">
                   Starts at
                 </label>
-                <p className="text-xs text-gray-400 mt-0.5">
+                <p className="text-xs text-gray-400 mt-0.5 max-w-[240px]">
                   When the preorder window opens.
                 </p>
               </div>
@@ -259,17 +236,17 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
                 type="datetime-local"
                 value={startsAt}
                 onChange={(e) => setStartsAt(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-colors"
+                className="max-w-md w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-colors"
               />
             </div>
 
             {/* Ends at */}
-            <div className="grid grid-cols-[200px_1fr] gap-4 items-start">
+            <div className="grid grid-cols-[280px_1fr] gap-4 items-start py-6">
               <div>
                 <label className="text-sm font-semibold text-gray-800">
                   Ends at
                 </label>
-                <p className="text-xs text-gray-400 mt-0.5">
+                <p className="text-xs text-gray-400 mt-0.5 max-w-[240px]">
                   Leave empty for no end date.
                 </p>
               </div>
@@ -278,17 +255,17 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
                 type="datetime-local"
                 value={endsAt}
                 onChange={(e) => setEndsAt(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-colors"
+                className="max-w-md w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 transition-colors"
               />
             </div>
 
             {/* Status */}
-            <div className="grid grid-cols-[200px_1fr] gap-4 items-start">
+            <div className="grid grid-cols-[280px_1fr] gap-4 items-start py-6">
               <div>
                 <label className="text-sm font-semibold text-gray-800">
                   Status
                 </label>
-                <p className="text-xs text-gray-400 mt-0.5">
+                <p className="text-xs text-gray-400 mt-0.5 max-w-[240px]">
                   Active preorders are visible to customers.
                 </p>
               </div>
@@ -298,8 +275,8 @@ export default function PreorderForm({ preorder }: PreorderFormProps) {
                   enabled={status}
                   onChange={setStatus}
                 />
-                <span className="text-sm text-gray-600">
-                  {status ? "Active" : "Inactive"}
+                <span className="text-sm text-gray-700 font-medium">
+                  Active
                 </span>
               </div>
             </div>

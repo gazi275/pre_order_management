@@ -23,11 +23,11 @@ export default function FilterTabs({
           id={`filter-tab-${tab.value}`}
           onClick={() => onFilterChange(tab.value)}
           className={`
-            px-3 py-1.5 text-sm font-semibold rounded-lg transition-colors duration-150
+            px-3 py-1.5 text-sm rounded-lg transition-colors duration-150
             ${
               activeFilter === tab.value
-                ? "bg-gray-100 text-gray-900"
-                : "text-gray-500 hover:text-gray-900 bg-transparent"
+                ? "bg-gray-100 text-gray-900 font-bold"
+                : "text-gray-500 hover:text-gray-900 font-normal bg-transparent"
             }
           `}
         >

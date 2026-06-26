@@ -1,6 +1,6 @@
-// ──────────────────────────────────────────────
+
 // Preorder domain types
-// ──────────────────────────────────────────────
+
 
 export type PreorderWhen = "out-of-stock" | "regardless-of-stock";
 export type PreorderStatus = "active" | "inactive";
@@ -17,9 +17,8 @@ export interface Preorder {
   updatedAt: string;
 }
 
-// ──────────────────────────────────────────────
+
 // API request / response shapes
-// ──────────────────────────────────────────────
 
 export interface PreorderListParams {
   status?: string;
@@ -52,4 +51,4 @@ export interface CreatePreorderPayload {
   status: PreorderStatus;
 }
 
-export interface UpdatePreorderPayload extends Partial<CreatePreorderPayload> {}
+export interface UpdatePreorderPayload extends Partial<CreatePreorderPayload> { }
