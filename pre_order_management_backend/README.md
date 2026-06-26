@@ -1,16 +1,22 @@
-# Preorder Manager - Backend API
+# Preorder Manager - Backend
 
-A simple Express.js + Prisma + SQLite backend for managing preorders.
+This is the backend component for the **Preorder Manager** application, built for the Xubitar technical assessment.
 
-## Tech Stack
+## 🚀 Tech Stack
 
-- **Runtime:** Node.js + TypeScript
-- **Framework:** Express.js
-- **ORM:** Prisma
-- **Database:** SQLite
-- **Validation:** Zod
+- **Framework**: Express.js (Node.js)
+- **Language**: TypeScript
+- **ORM**: Prisma
+- **Database**: SQLite
+- **Validation**: Zod
 
-## Setup Instructions
+## ✨ Features Implemented
+
+- **RESTful API**: Clean API endpoints for CRUD operations on preorders.
+- **Server-side Logic**: Handles pagination, sorting, filtering, and search robustly on the backend using Prisma queries.
+- **Data Integrity**: Validates payloads on creation and update to ensure a reliable SQLite database state.
+
+## ⚙️ Setup Instructions
 
 ### 1. Install dependencies
 
@@ -20,11 +26,15 @@ npm install
 
 ### 2. Set up the database
 
+Ensure that Prisma migrates your SQLite database:
+
 ```bash
 npx prisma migrate dev --name init
 ```
 
-### 3. Seed sample data
+### 3. Seed sample data (Optional)
+
+If you'd like to populate the database with initial sample data:
 
 ```bash
 npm run db:seed
@@ -38,7 +48,7 @@ npm run dev
 
 The API will be running at `http://localhost:5000`
 
-## API Endpoints
+## 📡 API Endpoints
 
 | Method   | Endpoint                       | Description                      |
 | -------- | ------------------------------ | -------------------------------- |
@@ -46,23 +56,23 @@ The API will be running at `http://localhost:5000`
 | `POST`   | `/api/v1/preorders`            | Create a new preorder            |
 | `GET`    | `/api/v1/preorders/:id`        | Get a single preorder            |
 | `PATCH`  | `/api/v1/preorders/:id`        | Update a preorder                |
-| `PATCH`  | `/api/v1/preorders/:id/status` | Toggle preorder status           |
+| `PATCH`  | `/api/v1/preorders/:id/status` | Toggle preorder status (active/inactive) |
 | `DELETE` | `/api/v1/preorders/:id`        | Delete a preorder                |
 
-## Query Parameters (GET /api/v1/preorders)
+## 🔍 Query Parameters (GET /api/v1/preorders)
 
 | Parameter    | Type   | Description                              |
 | ------------ | ------ | ---------------------------------------- |
 | `status`     | string | Filter by status: `all`, `active`, `inactive` |
 | `searchTerm` | string | Search by preorder name                  |
-| `sortBy`     | string | Sort field: `name`, `createdAt`, `startsAt`, `endsAt` |
+| `sortBy`     | string | Sort field (e.g., `name`, `products`, `startsAt`, `endsAt`) |
 | `sortOrder`  | string | Sort direction: `asc` or `desc`          |
 | `page`       | number | Page number (default: 1)                 |
 | `limit`      | number | Items per page (default: 10)             |
 
-## Environment Variables
+## 🛠️ Environment Variables
 
-Create a `.env` file:
+A `.env` file should be present in the root of the backend directory. Here's a sample configuration:
 
 ```env
 NODE_ENV="development"
