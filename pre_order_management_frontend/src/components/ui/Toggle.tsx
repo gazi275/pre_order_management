@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 interface ToggleProps {
   enabled: boolean;
   onChange: (value: boolean) => void;
@@ -21,22 +23,21 @@ export default function Toggle({
       aria-checked={enabled}
       disabled={disabled}
       onClick={() => onChange(!enabled)}
-      className={`
-        relative inline-flex h-[20px] w-[32px] shrink-0 cursor-pointer
-        rounded-full border border-transparent transition-colors
-        duration-200 ease-in-out focus:outline-none
-        ${enabled ? "bg-black" : "bg-gray-200"}
-        ${disabled ? "opacity-50 cursor-not-allowed" : ""}
-      `}
+      className={`focus:outline-none transition-transform hover:scale-105 active:scale-95 ${
+        disabled ? "opacity-50 cursor-not-allowed" : ""
+      }`}
     >
-      <span
-        className={`
-          pointer-events-none inline-block h-[16px] w-[16px]
-          transform rounded-full bg-white shadow-sm ring-0
-          transition duration-200 ease-in-out
-          absolute top-[1px] left-[1px]
-          ${enabled ? "translate-x-[14px]" : "translate-x-0"}
-        `}
+      <Image
+        src={
+          enabled
+            ? "https://img.icons8.com/parakeet-filled/48/switch-on.png"
+            : "https://img.icons8.com/parakeet-filled/48/switch-off.png"
+        }
+        alt={enabled ? "Active" : "Inactive"}
+        width={36}
+        height={36}
+        className="object-contain"
+        unoptimized
       />
     </button>
   );
