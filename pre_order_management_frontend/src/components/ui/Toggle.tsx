@@ -27,19 +27,15 @@ export default function Toggle({
         disabled ? "opacity-50 cursor-not-allowed" : ""
       }`}
     >
-      <Image
+      <img
         src={
           enabled
             ? "https://img.icons8.com/parakeet-filled/48/switch-on.png"
-            : "https://img.icons8.com/parakeet-filled/48/switch-off.png"
+            : "https://img.icons8.com/officel/80/switch-off.png"
         }
         alt={enabled ? "Active" : "Inactive"}
-        width={36}
-        height={36}
-        className="object-contain"
-        unoptimized
+        className="w-10 h-10 object-contain"
       />
     </button>
   );
 }
-
